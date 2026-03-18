@@ -119,7 +119,7 @@ const experiences: Experience[] = [
     type: 'Internship',
     summary:
       'Supported the development, testing and improvement of internal enterprise systems used across the organization.',
-    image: '/images/experience/mediacorp-internship.jpeg',
+    image: `${import.meta.env.BASE_URL}images/experience/mediacorp-internship.jpeg`,
     imageAlt: 'Mediacorp Enterprise Apps internship',
     details: [
       'Designed an approval workflow using Jira Automation and Microsoft Power Automate.',
@@ -140,7 +140,7 @@ const projects: Project[] = [
     description:
       'Designed and implemented an approval workflow during my internship at Mediacorp using Jira Automation and Microsoft Power Automate, improving internal request handling efficiency and process standardization.',
     stack: ['Jira Automation', 'Power Automate', 'Workflow Design'],
-    image: '/images/projects/workflow.png',
+    image: `${import.meta.env.BASE_URL}images/projects/workflow.png`,
   },
   {
     title: 'ERP System for a Local Spa Business',
@@ -149,7 +149,7 @@ const projects: Project[] = [
     description:
       'Built as part of a 14-member team. Served as Assistant Team Leader and worked on Service/Product Management and Employee Timetable modules.',
     stack: ['React', 'Node.js', 'PostgreSQL'],
-    image: '/images/projects/erp.jpeg',
+    image: `${import.meta.env.BASE_URL}images/projects/erp.jpeg`,
   },
   {
     title: 'Cleaning Service Website',
@@ -158,7 +158,7 @@ const projects: Project[] = [
     description:
       'Developed admin-side features for managing services, bookings and member accounts in a 3-member team project.',
     stack: ['Jakarta EE', 'PostgreSQL', 'Eclipse'],
-    image: '/images/projects/cleaning.png',
+    image: `${import.meta.env.BASE_URL}images/projects/cleaning.png`,
   },
   {
     title: 'EcoHome Energy Monitoring App',
@@ -167,7 +167,7 @@ const projects: Project[] = [
     description:
       'Developed a prototype mobile application in a 3-member team to monitor home appliance energy usage. Built using the Mendix low-code platform, with Node-RED for workflow integration and SQL for data handling.',
     stack: ['Mendix', 'Node-RED', 'SQL'],
-    image: '/images/projects/ecohome.png',
+    image: `${import.meta.env.BASE_URL}images/projects/ecohome.png`,
   },
   {
     title: 'Smart Pet Feeder IoT Project',
@@ -176,7 +176,7 @@ const projects: Project[] = [
     description:
       'Created a smart pet feeder using Raspberry Pi and Python with sensors and Telegram bot integration.',
     stack: ['Python', 'Raspberry Pi', 'IoT'],
-    image: '/images/projects/iot.png',
+    image: `${import.meta.env.BASE_URL}images/projects/iot.png`,
   },
 ]
 
@@ -222,37 +222,37 @@ const activities: Activity[] = [
     title: 'Pathways in Python Tech for Good Hackathon 2026',
     description:
       'Achieved second place for developing an LLM-powered desktop application using Python, PyGame, and API-based LLM integrations.',
-    image: '/images/activities/hackathon.png',
+    image: `${import.meta.env.BASE_URL}images/activities/hackathon.png`,
   },
   {
     title: 'SIGNature Song-Signing Showcase',
     description:
       'Participated in the SIGNature Song-Signing Showcase for the Deaf community at Singapore Polytechnic.',
-    image: '/images/activities/signature.jpeg',
+    image: `${import.meta.env.BASE_URL}images/activities/signature.jpeg`,
   },
   {
     title: 'Overseas Study Trip to Kuala Lumpur',
     description:
       'Joined the School of Computing overseas study trip to Kuala Lumpur, Malaysia.',
-    image: '/images/activities/kl.jpeg',
+    image: `${import.meta.env.BASE_URL}images/activities/kl.jpeg`,
   },
   {
     title: 'Seniors Appreciation Concert',
     description:
       'Participated in the Seniors Appreciation Concert at Singapore Polytechnic.',
-    image: '/images/activities/appreciation.jpeg',
+    image: `${import.meta.env.BASE_URL}images/activities/appreciation.jpeg`,
   },
   {
     title: 'Basic Peer Support Skills Training',
     description:
       'Completed Basic Peer Support Skills Training under the Department of Student Services.',
-    image: '/images/activities/peer-support.png',
+    image: `${import.meta.env.BASE_URL}images/activities/peer-support.png`,
   },
   {
     title: 'SG Clean Day',
     description:
       'Participated in SG Clean Day as part of community volunteering.',
-    image: '/images/activities/sg-cleanday.png',
+    image: `${import.meta.env.BASE_URL}images/activities/sg-cleanday.png`,
   },
 ]
 
@@ -402,7 +402,7 @@ function App() {
 
               <div className="hero-photo-frame">
                 <img
-                  src="/images/profile.jpeg"
+                  src={`${import.meta.env.BASE_URL}images/profile.jpeg`}
                   alt="Profile portrait"
                   className="hero-photo"
                 />
