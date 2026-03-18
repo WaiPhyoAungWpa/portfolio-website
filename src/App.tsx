@@ -274,6 +274,7 @@ function App() {
   const [showAllProjects, setShowAllProjects] = useState(false)
   const [activeActivityIndex, setActiveActivityIndex] = useState(0)
   const [copiedField, setCopiedField] = useState<string | null>(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const firstEducation = education[0]
   const featuredExperience = experiences[0]
@@ -342,27 +343,63 @@ function App() {
     <div className="site-shell">
       <header className="topbar">
         <div className="container topbar-inner">
-          <a className="brand" href="#home">
+          <a className="brand" href="#home" onClick={() => setIsMobileMenuOpen(false)}>
             Wai Phyo Aung
           </a>
 
-          <nav className="nav-links" aria-label="Primary navigation">
-            <a className="nav-item nav-delay-1" href="#about">
+          <button
+            className={`menu-toggle ${isMobileMenuOpen ? 'is-open' : ''}`}
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMobileMenuOpen}
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+
+          <nav className={`nav-links ${isMobileMenuOpen ? 'is-open' : ''}`}>
+            <a
+              className="nav-item nav-delay-1"
+              href="#about"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               About
             </a>
-            <a className="nav-item nav-delay-2" href="#experience">
+            <a
+              className="nav-item nav-delay-2"
+              href="#experience"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Experience
             </a>
-            <a className="nav-item nav-delay-3" href="#projects">
+            <a
+              className="nav-item nav-delay-3"
+              href="#projects"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Projects
             </a>
-            <a className="nav-item nav-delay-4" href="#education">
+            <a
+              className="nav-item nav-delay-4"
+              href="#education"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Education
             </a>
-            <a className="nav-item nav-delay-5" href="#activities">
+            <a
+              className="nav-item nav-delay-5"
+              href="#activities"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Activities
             </a>
-            <a className="nav-item nav-delay-6" href="#contact">
+            <a
+              className="nav-item nav-delay-6"
+              href="#contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Contact
             </a>
           </nav>
