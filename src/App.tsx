@@ -1,273 +1,13 @@
 import './App.css'
 import { useEffect, useMemo, useState } from 'react'
-
-type Skill = {
-  name: string
-  featured?: boolean
-}
-
-type SkillGroup = {
-  title: string
-  featured?: boolean
-  skills: Skill[]
-}
-
-type Experience = {
-  company: string
-  role: string
-  location: string
-  period: string
-  type: string
-  summary: string
-  image: string
-  imageAlt: string
-  details: string[]
-  tools: string[]
-}
-
-type Project = {
-  title: string
-  period: string
-  type: string
-  description: string
-  stack: string[]
-  image: string
-  featured?: boolean
-}
-
-type EducationItem = {
-  school: string
-  qualification: string
-  period: string
-  details: string[]
-}
-
-type Activity = {
-  title: string
-  description: string
-  image?: string
-}
-
-const skillGroups: SkillGroup[] = [
-  {
-    title: 'Languages',
-    featured: true,
-    skills: [
-      { name: 'JavaScript', featured: true },
-      { name: 'Python' },
-      { name: 'Java', featured: true },
-      { name: 'C#' },
-      { name: 'SQL', featured: true },
-    ],
-  },
-  {
-    title: 'Frontend & Backend',
-    featured: true,
-    skills: [
-      { name: 'React.js', featured: true },
-      { name: 'Node.js', featured: true },
-      { name: 'REST APIs' },
-      { name: '.NET' },
-    ],
-  },
-  {
-    title: 'Databases',
-    skills: [
-      { name: 'PostgreSQL', featured: true },
-      { name: 'MySQL', featured: true },
-      { name: 'Microsoft SQL Server' },
-    ],
-  },
-  {
-    title: 'Tools & IDEs',
-    skills: [
-      { name: 'GitHub', featured: true },
-      { name: 'Visual Studio Code', featured: true },
-      { name: 'Microsoft Visual Studio' },
-      { name: 'Eclipse' },
-      { name: 'NetBeans' },
-      { name: 'Postman' },
-    ],
-  },
-  {
-    title: 'Low-Code & Automation',
-    featured: true,
-    skills: [
-      { name: 'Power Apps' },
-      { name: 'Power Automate', featured: true },
-      { name: 'Power BI' },
-      { name: 'Jira Automation', featured: true },
-      { name: 'Mendix Studio', featured: true },
-    ],
-  },
-  {
-    title: 'Others',
-    skills: [
-      { name: 'Software Engineering Practices', featured: true },
-      { name: 'CI/CD workflows' },
-      { name: 'Orange Data Mining' },
-    ],
-  },
-]
-
-const experiences: Experience[] = [
-  {
-    company: 'Mediacorp',
-    role: 'Enterprise Apps Intern',
-    location: 'Singapore',
-    period: 'Sep 2025 – Feb 2026',
-    type: 'Internship',
-    summary:
-      'Supported the development, testing and improvement of internal enterprise systems used across the organization.',
-    image: `${import.meta.env.BASE_URL}images/experience/mediacorp-internship.jpeg`,
-    imageAlt: 'Mediacorp Enterprise Apps internship',
-    details: [
-      'Designed an approval workflow using Jira Automation and Microsoft Power Automate.',
-      'Developed a .NET console application for backend batch jobs.',
-      'Conducted system testing for internal enterprise systems.',
-      'Collaborated with internal IT teams and external vendors to design workflows, prepare documentation, and support enterprise application operations.',
-    ],
-    tools: ['Jira Automation', 'Power Automate', '.NET', 'System Testing'],
-  },
-]
-
-const projects: Project[] = [
-  {
-    title: 'Approval Workflow Automation',
-    period: 'Nov 2025 – Jan 2026',
-    featured: true,
-    type: 'Internship Project',
-    description:
-      'Designed and implemented an approval workflow during my internship at Mediacorp using Jira Automation and Microsoft Power Automate, improving internal request handling efficiency and process standardization.',
-    stack: ['Jira Automation', 'Power Automate', 'Workflow Design'],
-    image: `${import.meta.env.BASE_URL}images/projects/workflow.png`,
-  },
-  {
-    title: 'ERP System for a Local Spa Business',
-    period: 'Apr – Jul 2025',
-    type: 'Real Client Project',
-    description:
-      'Built as part of a 14-member team. Served as Assistant Team Leader and worked on Service/Product Management and Employee Timetable modules.',
-    stack: ['React', 'Node.js', 'PostgreSQL'],
-    image: `${import.meta.env.BASE_URL}images/projects/erp.jpeg`,
-  },
-  {
-    title: 'Cleaning Service Website',
-    period: 'Jan – Feb 2025',
-    type: 'Academic Project',
-    description:
-      'Developed admin-side features for managing services, bookings and member accounts in a 3-member team project.',
-    stack: ['Jakarta EE', 'PostgreSQL', 'Eclipse'],
-    image: `${import.meta.env.BASE_URL}images/projects/cleaning.png`,
-  },
-  {
-    title: 'EcoHome Energy Monitoring App',
-    period: 'Jun – Jul 2024',
-    type: 'Academic Project',
-    description:
-      'Developed a prototype mobile application in a 3-member team to monitor home appliance energy usage. Built using the Mendix low-code platform, with Node-RED for workflow integration and SQL for data handling.',
-    stack: ['Mendix', 'Node-RED', 'SQL'],
-    image: `${import.meta.env.BASE_URL}images/projects/ecohome.png`,
-  },
-  {
-    title: 'Smart Pet Feeder IoT Project',
-    period: 'Jan – Feb 2024',
-    type: 'Academic Project',
-    description:
-      'Created a smart pet feeder using Raspberry Pi and Python with sensors and Telegram bot integration.',
-    stack: ['Python', 'Raspberry Pi', 'IoT'],
-    image: `${import.meta.env.BASE_URL}images/projects/iot.png`,
-  },
-]
-
-const education: EducationItem[] = [
-  {
-    school: 'Singapore Polytechnic',
-    qualification: 'Diploma in Information Technology',
-    period: 'Apr 2023 – Apr 2026',
-    details: [
-      'Software Development Specialization',
-      'Minor in 5G and Artificial Intelligence of Things (AIoT)',
-      'Industry Now Curriculum Pathway (Project INC)',
-      'Director’s Honour Roll for Academic Excellence (AY2023/2024)',
-      'Director’s Honour Roll for Academic Excellence (AY2024/2025)',
-    ],
-  },
-  {
-    school: 'RVi Institute',
-    qualification: 'College Preparatory Programme',
-    period: 'Aug 2022 – Feb 2023',
-    details: ['Awarded Best in Mathematics'],
-  },
-  {
-    school: 'MCTA Chinese High School',
-    qualification: 'High School Level 1 – Gao Yi',
-    period: 'Aug 2021 – Jul 2022',
-    details: [
-      'Awarded Best in overall score in the mid-term and final examinations',
-    ],
-  },
-  {
-    school: 'BEHS-16',
-    qualification: "Myanmar High School Diploma (Equivalent to GCE ‘O’ Level)",
-    period: 'Jun 2021 – Apr 2022',
-    details: [
-      '5 distinctions in English, Mathematics, Chemistry, Physics, and Biology',
-    ],
-  },
-]
-
-const activities: Activity[] = [
-  {
-    title: 'Pathways in Python Tech for Good Hackathon 2026',
-    description:
-      'Achieved second place for developing an LLM-powered desktop application using Python, PyGame, and API-based LLM integrations.',
-    image: `${import.meta.env.BASE_URL}images/activities/hackathon.png`,
-  },
-  {
-    title: 'SIGNature Song-Signing Showcase',
-    description:
-      'Participated in the SIGNature Song-Signing Showcase for the Deaf community at Singapore Polytechnic.',
-    image: `${import.meta.env.BASE_URL}images/activities/signature.jpeg`,
-  },
-  {
-    title: 'Overseas Study Trip to Kuala Lumpur',
-    description:
-      'Joined the School of Computing overseas study trip to Kuala Lumpur, Malaysia.',
-    image: `${import.meta.env.BASE_URL}images/activities/kl.jpeg`,
-  },
-  {
-    title: 'Seniors Appreciation Concert',
-    description:
-      'Participated in the Seniors Appreciation Concert at Singapore Polytechnic.',
-    image: `${import.meta.env.BASE_URL}images/activities/appreciation.jpeg`,
-  },
-  {
-    title: 'Basic Peer Support Skills Training',
-    description:
-      'Completed Basic Peer Support Skills Training under the Department of Student Services.',
-    image: `${import.meta.env.BASE_URL}images/activities/peer-support.png`,
-  },
-  {
-    title: 'SG Clean Day',
-    description:
-      'Participated in SG Clean Day as part of community volunteering.',
-    image: `${import.meta.env.BASE_URL}images/activities/sg-cleanday.png`,
-  },
-]
-
-const contactItems = [
-  {
-    label: 'Email',
-    value: 'waiphyo.wpa424@gmail.com',
-    href: 'mailto:waiphyo.wpa424@gmail.com',
-  },
-  {
-    label: 'LinkedIn',
-    value: 'linkedin.com/in/wai-phyo-aung-wpa',
-    href: 'https://linkedin.com/in/wai-phyo-aung-wpa',
-  },
-]
+import {
+  activities,
+  contactItems,
+  education,
+  experiences,
+  projects,
+  skillGroups,
+} from './data/portfolioData'
 
 function App() {
   const [showAllEducation, setShowAllEducation] = useState(false)
@@ -316,6 +56,8 @@ function App() {
     return () => observer.disconnect()
   }, [showAllEducation, showAllProjects])
 
+  const closeMobileMenu = () => setIsMobileMenuOpen(false)
+
   const nextActivity = () => {
     setActiveActivityIndex((prev) => (prev + 1) % activities.length)
   }
@@ -343,7 +85,7 @@ function App() {
     <div className="site-shell">
       <header className="topbar">
         <div className="container topbar-inner">
-          <a className="brand" href="#home" onClick={() => setIsMobileMenuOpen(false)}>
+          <a className="brand" href="#home" onClick={closeMobileMenu}>
             Wai Phyo Aung
           </a>
 
@@ -360,46 +102,22 @@ function App() {
           </button>
 
           <nav className={`nav-links ${isMobileMenuOpen ? 'is-open' : ''}`}>
-            <a
-              className="nav-item nav-delay-1"
-              href="#about"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a className="nav-item nav-delay-1" href="#about" onClick={closeMobileMenu}>
               About
             </a>
-            <a
-              className="nav-item nav-delay-2"
-              href="#experience"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a className="nav-item nav-delay-2" href="#experience" onClick={closeMobileMenu}>
               Experience
             </a>
-            <a
-              className="nav-item nav-delay-3"
-              href="#projects"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a className="nav-item nav-delay-3" href="#projects" onClick={closeMobileMenu}>
               Projects
             </a>
-            <a
-              className="nav-item nav-delay-4"
-              href="#education"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a className="nav-item nav-delay-4" href="#education" onClick={closeMobileMenu}>
               Education
             </a>
-            <a
-              className="nav-item nav-delay-5"
-              href="#activities"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a className="nav-item nav-delay-5" href="#activities" onClick={closeMobileMenu}>
               Activities
             </a>
-            <a
-              className="nav-item nav-delay-6"
-              href="#contact"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <a className="nav-item nav-delay-6" href="#contact" onClick={closeMobileMenu}>
               Contact
             </a>
           </nav>
@@ -628,9 +346,7 @@ function App() {
                     <div className="project-card-body">
                       <div className="project-card-top">
                         <p className="project-period">{project.period}</p>
-                        <span className="project-card-badge">
-                          {project.type}
-                        </span>
+                        <span className="project-card-badge">{project.type}</span>
                       </div>
 
                       <h3>{project.title}</h3>
@@ -704,7 +420,7 @@ function App() {
               <div className="education-timeline">
                 {education.map((item, index) => (
                   <article
-                    key={item.school}
+                    key={`${item.school}-${item.period}`}
                     className={`education-item reveal ${
                       index % 2 === 0 ? 'reveal-delay-1' : 'reveal-delay-2'
                     } ${
