@@ -105,50 +105,95 @@ export const experiences: Experience[] = [
       zh: '实习',
     },
     summary: {
-      en: 'Supported the development, testing and improvement of internal enterprise systems used across the organization.',
-      zh: '支持企业内部系统的开发，测试与优化。',
+      en: 'Completed a 22-week internship supporting the development, testing and maintenance of internal enterprise applications used across the organization.',
+      zh: '完成为期 22 周的实习，支持企业内部应用系统的开发、测试与维护。',
     },
     image: `images/experience/mediacorp-internship.jpeg`,
     imageAlt: 'Mediacorp Enterprise Apps internship',
     highlight: {
-      en: 'Designed an approval workflow using Jira Automation and Microsoft Power Automate to support internal request approvals.',
-      zh: '使用 Jira Automation 和 Microsoft Power Automate 设计审批流程，以支持内部请求审批。',
+      en: 'Designed an approval workflow using Jira Automation and Microsoft Power Automate to streamline internal request approvals.',
+      zh: '使用 Jira Automation 和 Microsoft Power Automate 设计审批流程，优化内部请求审批。',
     },
 
     details: [
       {
-        en: 'Developed a .NET console application for backend batch jobs.',
-        zh: '开发用于后端批处理任务的 .NET 控制台应用程序。',
+        en: 'Developed a .NET C# console application for backend batch processing.',
+        zh: '开发用于后端批处理的 .NET C# 控制台应用程序。',
       },
       {
-        en: 'Conducted system testing for internal enterprise systems.',
-        zh: '为企业内部系统进行系统测试。',
+        en: 'Conducted system testing and prepared User Acceptance Testing (UAT) scripts.',
+        zh: '执行系统测试并编写用户验收测试（UAT）脚本。',
       },
       {
-        en: 'Collaborated with internal IT teams and external vendors to design workflows, prepare documentation and support enterprise application operations.',
-        zh: '与内部 IT 团队和外部供应商合作，设计工作流程，编写文档并支持企业应用系统运行。',
+        en: 'Collaborated with internal IT teams and external vendors to gather requirements, prepare change requests, document workflows and support enterprise application operations.',
+        zh: '与内部 IT 团队及外部供应商合作，收集需求、准备变更请求、编写流程文档，并支持企业应用系统运维。',
       },
     ],
 
-    tools: ['Jira Automation', 'Power Automate', '.NET', 'System Testing'],
+    tools: [
+      'Jira Automation',
+      'Microsoft Power Automate',
+      '.NET C#',
+      'System Testing',
+      'UAT',
+    ],
   },
 ]
 
 export const projects: Project[] = [
   {
     title: {
+      en: 'Personal CMS',
+      zh: '个人内容管理系统',
+    },
+    period: 'Jun 2026 - Jul 2026',
+    featured: true,
+    type: {
+      en: 'Personal Project',
+      zh: '个人项目',
+    },
+    description: {
+      en: 'Built and deployed a full-stack content management system that enables content creation, publishing, analytics, and public content browsing through separate admin and visitor interfaces.',
+      zh: '开发并部署全栈内容管理系统，提供后台内容管理、数据分析及公开内容浏览功能。',
+    },
+    stack: [
+      'React',
+      'TypeScript',
+      'ASP.NET Core',
+      'PostgreSQL',
+      'Entity Framework Core',
+      'Docker',
+      'Cloudinary',
+      'Google Analytics',
+    ],
+    image: `images/projects/personalcms1.png`,
+    details: [
+      {
+        en: 'Implemented a secure admin dashboard with draft management, publishing workflow, image management, analytics, related content and external reference support.',
+        zh: '实现安全的后台管理系统，支持草稿管理、发布流程、图片管理、数据分析、相关文章及外部参考链接。',
+      },
+      {
+        en: 'Deployed the application to production using Render and Supabase, strengthened security with JWT authentication, validation, rate limiting, automated testing and CI workflows.',
+        zh: '使用 Render 与 Supabase 部署至生产环境，并通过 JWT 身份验证、输入验证、限流、自动化测试及 CI 工作流程提升系统安全性与可靠性。',
+      }
+    ],
+    photos: ['images/projects/personalcms2.png','images/projects/personalcms3.png','images/projects/personalcms4.png','images/projects/personalcms5.png'],
+    videoUrl: 'https://youtu.be/SKgSiYHPeMU?si=mTHbQDQV0F0_Y-4J',
+    liveSiteUrl: 'https://cms-frontend-5mn3.onrender.com/',
+  },
+  {
+    title: {
       en: 'Approval Workflow Automation',
       zh: '审批流程自动化',
     },
     period: 'Nov 2025 - Jan 2026',
-    featured: true,
     type: {
       en: 'Internship Project',
       zh: '实习项目'
     },
     description: {
-      en: 'Designed and implemented an approval workflow integrating Jira Service Management with Microsoft Power Automate using REST APIs and HTTP webhooks.',
-      zh: '设计并实现审批流程，将 Jira Service Management 与 Microsoft Power Automate 通过 REST API 和 HTTP Webhook 集成。',
+      en: 'Designed and implemented a proof-of-concept approval workflow integrating Jira Service Management with Microsoft Power Automate using REST APIs and HTTP webhooks.',
+      zh: '设计并实现审批流程概念验证（PoC），通过 REST API 和 HTTP Webhook 将 Jira Service Management 与 Microsoft Power Automate 集成。',
     },
     stack: ['Jira Automation', 'Microsoft Power Automate', 'REST APIs', 'HTTP Webhooks'],
     image: `images/projects/workflow.png`,
@@ -306,6 +351,25 @@ export const projects: Project[] = [
 
 export const education: EducationItem[] = [
   {
+    school: 'Nanyang Technological University',
+    qualification: {
+      en: 'Bachelor of Computing in Computer Science',
+      zh: '计算机科学学士',
+    },
+    period: 'Aug 2026 - Present',
+    details: [
+      {
+        en: 'Undergraduate Student',
+        zh: '本科生',
+      },
+      {
+        en: 'Major in Computer Science',
+        zh: '计算机科学专业',
+      },
+    ],
+    achievements: [],
+  },
+  {
     school: 'Singapore Polytechnic',
     qualification: {
       en: 'Diploma in Information Technology (with Merit)',
@@ -337,20 +401,20 @@ export const education: EducationItem[] = [
       },
     ],
   },
-  {
-    school: 'RVi Institute',
-    qualification: {
-      en: 'College Preparatory Programme',
-      zh: '大学预科课程',
-    },
-    period: 'Aug 2022 - Feb 2023',
-    achievements: [
-      {
-        en: 'Best in Mathematics Award',
-        zh: '数学成绩最佳奖',
-      },
-    ],
-  },
+  // {
+  //   school: 'RVi Institute',
+  //   qualification: {
+  //     en: 'College Preparatory Programme',
+  //     zh: '大学预科课程',
+  //   },
+  //   period: 'Aug 2022 - Feb 2023',
+  //   achievements: [
+  //     {
+  //       en: 'Best in Mathematics Award',
+  //       zh: '数学成绩最佳奖',
+  //     },
+  //   ],
+  // },
   // {
   //   school: 'MCTA Chinese High School',
   //   qualification: {

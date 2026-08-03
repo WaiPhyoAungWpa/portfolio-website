@@ -729,6 +729,21 @@ function App() {
                 </div>
               </div>
 
+              {selectedProject.liveSiteUrl && (
+                  <div className="project-modal-section">
+                    <h4>{lang === 'en' ? 'Live Site' : '在线体验'}</h4>
+
+                    <a
+                      href={selectedProject.liveSiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-modal-live-site"
+                    >
+                      {lang === 'en' ? 'Visit Live Site ↗' : '访问网站 ↗'}
+                    </a>
+                  </div>
+              )}
+
               <div className="project-modal-section">
                 <h4>{lang === 'en' ? 'Video demo' : '演示视频'}</h4>
 

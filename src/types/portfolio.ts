@@ -40,6 +40,7 @@ export type Project = {
   photos: string[]
   videoUrl?: string
   instagramReelUrl?: string
+  liveSiteUrl?: string
 }
 
 export type EducationItem = {
